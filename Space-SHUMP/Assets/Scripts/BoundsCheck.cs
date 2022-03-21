@@ -87,7 +87,13 @@ public class BoundsCheck : MonoBehaviour
     }//end LateUpdate
 
     //Draw the bounds in the scene pane
-
+    private void OnDrawGizmos()
+    {
+        if (!Application.isPlaying) return;
+        Vector3 boundSize = new Vector3(camWidth * 2, camHeight * 2, 0.1f);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireCube(Vector3.zero, boundSize);
+    } //end OnDrawGizmos()
 
 
 
