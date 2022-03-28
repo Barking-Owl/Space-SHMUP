@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3203207856983677858}
   - component: {fileID: 588236791677246782}
   - component: {fileID: 1200115686393472605}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6650417068412078601}
   - component: {fileID: 6650417068412078602}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: spr_Ship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 6650417068716629934}
   - component: {fileID: 6650417068716629933}
   - component: {fileID: 6650417068716629932}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerShip
   m_TagString: Player
   m_Icon: {fileID: 0}
