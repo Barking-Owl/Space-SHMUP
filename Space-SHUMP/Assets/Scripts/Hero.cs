@@ -3,7 +3,7 @@
  * Date Created: March 16, 2022
  * 
  * Last Edited by: Andrew Nguyen
- * Last Edited: March 28, 2022
+ * Last Edited: March 30, 2022
  * 
  * Description: Hero ship controller
 ****/
@@ -45,12 +45,17 @@ public class Hero : MonoBehaviour
     public float rollMult = -45; //The tilting from side to side
     public float pitchMult = 30; //The tilt from up to down
 
+    [Space(10)]
 
+    [Header("Projectile Settings")]
+    public GameObject projectilePrefab;
+    public float projectileSpeed;
 
     [Space(10)]
 
     private GameObject lastTriggerGo; //reference to the last triggering game object
-   
+    
+    [Header("Shield Settings")]
     [SerializeField] //show in inspector
     private float _shieldLevel = 1; //level for shields
     public int maxShield = 4; //maximum shield level
@@ -108,6 +113,11 @@ public class Hero : MonoBehaviour
         //Also rotate the ship
         transform.rotation = Quaternion.Euler(yAxis * pitchMult, xAxis * rollMult, 0); //Nothing with Z-axis so leave it as 0
 
+        //Check for spacebar (firing)
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            TempFire();
+        }
     }//end Update()
 
 
@@ -140,4 +150,17 @@ public class Hero : MonoBehaviour
 
     }//end OnTriggerEnter()
 
+    void TempFire()
+    {
+        GameObject projGo = Instantiate<GameObject>(projectilePrefab);
+        projGo.transform.position = transform.position; //Spawn projectile at the hero's location
+        //Make physics move the projectile based off velocity 
+        Rigidbody rb = projGo.GetComponent<Rigidbody>();
+        rb.velocity = Vector3.up * projectileSpeed;
+    }
+
+    public void AddToScore(int value)
+    {
+        gm.UpdateScore(value);
+    }
 }

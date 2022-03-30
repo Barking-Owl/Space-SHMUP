@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Projectile Hero
+  - Projectile Enemy
+  - Power Up
+  - Power UpBox
   layers:
   - Default
   - TransparentFX

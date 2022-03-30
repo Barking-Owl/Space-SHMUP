@@ -3,7 +3,7 @@
  * Date Created: March 16, 2022
  * 
  * Last Edited by: Andrew Nguyen
- * Last Edited: March 28, 2022
+ * Last Edited: March 30, 2022
  * 
  * Description: Enemy controler
 ****/
@@ -66,4 +66,20 @@ public class Enemy : MonoBehaviour
         tempPos.y -= speed * Time.deltaTime; //Move the temporary position
         pos = tempPos; //Set it to the temporary position to move
     } //end Move()
+
+    public void OnCollisionEnter(Collision col)
+    {
+        GameObject otherGO = col.gameObject;
+        if (otherGO.tag == "Projectile Hero")
+        {
+            Debug.Log("Enemy hit by Projectile: " + otherGO.name);
+            Hero.SHIP.AddToScore(score);
+            Destroy(otherGO);
+            Destroy(gameObject);
+        }
+        else
+        {
+            Debug.Log("Enemy was not hitting a projectile");
+        }
+    }
 }
